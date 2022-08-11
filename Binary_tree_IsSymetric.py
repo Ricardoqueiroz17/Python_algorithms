@@ -9,6 +9,11 @@ class TreeNode:
          self.val = val
          self.left = left
          self.right = right
+         # Method to show the TreeNode in the results
+
+    def __repr__(self) -> str:
+        return '[%s, %r, %r]' % (self.val, self.left, self.right)
+
 
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
@@ -28,7 +33,36 @@ class Solution:
 
         return check(root.left, root.right)
 
-#Valid
+
+#==============================================================================
+# This is a complex validation, as long as we have to build a whole TreeNode with all its lefts and rights
+#VALID 1
+# Binary Tree we want to build =  [1,2,2,3,4,4,3] -> The result should be True
+
+r = TreeNode(1)
+r.left = TreeNode(2)
+r.right = TreeNode(2)
+
+r.left.left = TreeNode(3)
+r.left.right = TreeNode(4)
+
+r.right.left = TreeNode(4)
+r.right.right = TreeNode(3)
+
 c = Solution()
-root = [12323232332,2,242424,2320392032,3,0,3]
-print(c.isSymmetric(root))
+print(c.isSymmetric(r))
+#==============================================================================
+#VALID 2
+#Binary Tree we want to build = [1,2,2,None,3,None,3] -> The result should be False
+r2 = TreeNode(1)
+r2.left = TreeNode(2)
+r2.right = TreeNode(2)
+
+r2.left.left = TreeNode(None)
+r2.left.right = TreeNode(3)
+
+r2.right.left = TreeNode(None)
+r2.right.right = TreeNode(3)
+
+c2 = Solution()
+print(c2.isSymmetric(r2))

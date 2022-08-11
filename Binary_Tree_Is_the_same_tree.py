@@ -8,7 +8,11 @@ class TreeNode:
     def __init__(self, val=0,right=None,left=None):
         self.val=val
         self.right=right
-        self.left=left
+
+    # Method to show the TreeNode in the results
+    def __repr__(self) -> str:
+        return '[%s, %r, %r]' % (self.val, self.left, self.right)
+
 
 class Solution:
     def isSameTree(self, p:Optional[TreeNode], q:Optional[TreeNode])-> bool:
